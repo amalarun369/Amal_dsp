@@ -1,66 +1,25 @@
-%{
-% GENERATION OF RAMP SIGNAL 
 clc;
 clf;
+close all;
 clear all;
+n1=input('Enter the starting point of signal: ');
+n2=input('Enter the end point of signal: ');
+sample_points = -n1:1:n2;
+amp_1 = zeros(1,n1+1);
+for(i=1:n2)
+    amp_2(i)=i*i;
+end
+amp_2;
+amplitude=[amp_1 amp_2];
 
-n1 = input("Enter the starting point of the signal: n_start = ");
-n2 = input("Enter the ending point of the signal: n_end = ");
-
-% discrete ramp signal
-sample_points = -n1:0.1:n2;
-amplitude = sample_points .* (sample_points >= 0);   
-
-% Plotting both using subplot
-
-% Subplot for discrete ramp signal
-subplot(2, 1, 1);  
-stem(sample_points, amplitude, 'filled');
-xlabel("Sample Points");
-ylabel("Amplitude");
-title("Discrete Ramp Signal");
+subplot(121);
+plot(sample_points, amplitude)
 grid on;
+xlabel('time&');
+ylabel('amplitude');
 
-% Subplot for continuous ramp signal
-subplot(2, 1, 2);  
-plot(sample_points, amplitude, 'LineWidth', 2);
-xlabel("Time (s)");
-ylabel("Amplitude");
-title("Continuous Ramp Signal");
+subplot(122);
+stem(sample_points, amplitude)
 grid on;
-%}
-
-
-
-
-% GENERATION OF RAMP SIGNAL 
-
-clc;
-clf;
-
-n1 = input("Enter the starting point of the signal: n_start = ");
-n2 = input("Enter the ending point of the signal: n_end = ");
-
-% Define sample points for the ramp signal
-sample_points = -n1:0.1:n2;
-amplitude = sample_points .* (sample_points >= 0);   
-
-% Subplot for discrete ramp signal
-subplot(2, 1, 1);  
-stem(sample_points, amplitude, 'filled', 'LineWidth', 2);
-xlabel("Sample Points");
-ylabel("Amplitude");
-title("Discrete Ramp Signal");
-grid on;
-% Adjust y-axis to show negative values down to -1
-ylim([-1 1.1 * max(amplitude)]);
-
-% Subplot for continuous ramp signal
-subplot(2, 1, 2);  
-plot(sample_points, amplitude, 'LineWidth', 2);
-xlabel("Time (s)");
-ylabel("Amplitude");
-title("Continuous Ramp Signal");
-grid on;
-% Adjust y-axis to show negative values down to -1
-ylim([-1 1.1 * max(amplitude)]);
+xlabel('time');
+ylabel('amplitude');
